@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Student Dashboard Extension",
+  "version": "1.0.0",
+  "description": "A Chrome Extension built with Angular 14 to manage student information",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Student Dashboard"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+} 

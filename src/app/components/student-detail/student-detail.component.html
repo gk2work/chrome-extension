@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="header">
+    <button class="back-button secondary" (click)="backToList()">Back to List</button>
+    <button class="logout-button secondary" (click)="logout()">Logout</button>
+  </div>
+  
+  <app-loading [isLoading]="isLoading" message="Loading student details..."></app-loading>
+  
+  <div *ngIf="!isLoading">
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    
+    <div class="student-detail" *ngIf="student && !errorMessage">
+      <h2>{{ student.name }}</h2>
+      
+      <div class="detail-section">
+        <h3>Academic Information</h3>
+        <div class="detail-row">
+          <div class="detail-label">Major:</div>
+          <div class="detail-value">{{ student.major }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Grade:</div>
+          <div class="detail-value">{{ student.grade }}</div>
+        </div>
+        <div class="detail-row" *ngIf="student.currentGPA">
+          <div class="detail-label">Current GPA:</div>
+          <div class="detail-value">{{ student.currentGPA }}</div>
+        </div>
+        <div class="detail-row" *ngIf="student.credits">
+          <div class="detail-label">Credits:</div>
+          <div class="detail-value">{{ student.credits }}</div>
+        </div>
+        <div class="detail-row" *ngIf="student.academicStatus">
+          <div class="detail-label">Status:</div>
+          <div class="detail-value">{{ student.academicStatus }}</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Enrollment Date:</div>
+          <div class="detail-value">{{ student.enrollmentDate }}</div>
+        </div>
+      </div>
+      
+      <div class="detail-section">
+        <h3>Contact Information</h3>
+        <div class="detail-row">
+          <div class="detail-label">Email:</div>
+          <div class="detail-value">{{ student.email }}</div>
+        </div>
+        <div class="detail-row" *ngIf="student.phone">
+          <div class="detail-label">Phone:</div>
+          <div class="detail-value">{{ student.phone }}</div>
+        </div>
+        <div class="detail-row" *ngIf="student.address">
+          <div class="detail-label">Address:</div>
+          <div class="detail-value">{{ student.address }}</div>
+        </div>
+      </div>
+      
+      <div class="detail-section" *ngIf="student.advisorName">
+        <h3>Additional Information</h3>
+        <div class="detail-row">
+          <div class="detail-label">Advisor:</div>
+          <div class="detail-value">{{ student.advisorName }}</div>
+        </div>
+        <div class="detail-row" *ngIf="student.dateOfBirth">
+          <div class="detail-label">Date of Birth:</div>
+          <div class="detail-value">{{ student.dateOfBirth }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

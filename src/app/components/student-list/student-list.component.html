@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="header">
+    <h2>Student List</h2>
+    <button class="logout-button secondary" (click)="logout()">Logout</button>
+  </div>
+  
+  <app-loading [isLoading]="isLoading" message="Loading students..."></app-loading>
+  
+  <div *ngIf="!isLoading">
+    <div class="student-count" *ngIf="students.length > 0">
+      Total Students: {{ students.length }}
+    </div>
+    
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    
+    <div class="list-container" *ngIf="students.length > 0">
+      <div class="item" *ngFor="let student of students" (click)="viewStudentDetails(student)">
+        <div class="student-name">{{ student.name }}</div>
+        <div class="student-info">{{ student.major }} | Grade: {{ student.grade }}</div>
+      </div>
+    </div>
+    
+    <div *ngIf="students.length === 0 && !errorMessage" class="no-students">
+      No students found.
+    </div>
+  </div>
+</div> 
